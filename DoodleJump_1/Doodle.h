@@ -27,6 +27,6 @@ private:
 	float GetHorizontalOffset() const;
 	
 	DirectionX m_direction = DirectionX::None;
-	
+
 	sf::RectangleShape m_body;
 };

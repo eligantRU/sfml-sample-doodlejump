@@ -103,13 +103,12 @@ void CGame::Render()
 void CGame::CheckCylinderEffect()
 {
 	auto doodlePosition = m_hero.GetPosition();
-
 	if (doodlePosition.x <= -DOODLE_SIZE.x)
 	{
-		m_hero.SetPosition(sf::Vector2f(float(WINDOW_SIZE.x - DOODLE_SIZE.x), doodlePosition.y));
+		m_hero.SetPosition({ WINDOW_SIZE.x - DOODLE_SIZE.x, doodlePosition.y });
 	}
 	if (doodlePosition.x >= WINDOW_SIZE.x)
 	{
-		m_hero.SetPosition(sf::Vector2f(0.f, doodlePosition.y));
+		m_hero.SetPosition({ 0, doodlePosition.y });
 	}
 }

@@ -14,7 +14,7 @@ static const sf::Color WHITE = { 255, 255, 255 };
 
 enum class DirectionX
 {
+	None = 0,
 	Left,
-	Right,
-	None
+	Right
 };

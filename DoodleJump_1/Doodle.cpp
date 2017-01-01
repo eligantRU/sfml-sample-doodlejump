@@ -22,7 +22,11 @@ void CDoodle::Draw(sf::RenderWindow & window)
 
 void CDoodle::UpdateDirection(bool isLeft, bool isRight)
 {
-	if (isLeft)
+	if (isLeft && isRight)
+	{
+		SetDirection(DirectionX::None);
+	}
+	else if (isLeft)
 	{
 		SetDirection(DirectionX::Left);
 	}
@@ -71,21 +75,21 @@ sf::Vector2f CDoodle::GetOffset() const
 float CDoodle::GetHorizontalOffset() const
 {
 	float positionX = 0;
-
-	DirectionX doodleDirection = GetDirection();
-	if (doodleDirection == DirectionX::Right)
+	switch (GetDirection())
 	{
+	case DirectionX::Right:
 		positionX += STEP;
-	}
-	else if (doodleDirection == DirectionX::Left)
-	{
+		break;
+	case DirectionX::Left:
 		positionX -= STEP;
+		break;
+	default:
+		break;
 	}
 	return positionX;
 }
 
 float CDoodle::GetVerticalOffset() const
 {
-	float offsetY = 0;
-	return offsetY;
+	return 0;
 }
