@@ -21,14 +21,12 @@ public:
 	void Move(const sf::Vector2f & deltaPosition);
 
 	sf::Vector2f GetOffset() const;
-	float GetVerticalOffset() const;
-	float GetHorizontalOffset() const;
 
 private:
-	DirectionX m_lastDirection = DirectionX::None;
+	float GetVerticalOffset() const;
+	float GetHorizontalOffset() const;
+	
 	DirectionX m_direction = DirectionX::None;
-	float m_speedY = 0;
-	sf::Vector2f m_positionBeforeDown;
-
+	
 	sf::RectangleShape m_body;
 };

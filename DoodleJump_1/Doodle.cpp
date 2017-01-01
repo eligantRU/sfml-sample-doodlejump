@@ -22,16 +22,17 @@ void CDoodle::Draw(sf::RenderWindow & window)
 
 void CDoodle::UpdateDirection(bool isLeft, bool isRight)
 {
-	SetDirection(DirectionX::None);
 	if (isLeft)
 	{
 		SetDirection(DirectionX::Left);
-		m_lastDirection = DirectionX::Left;
 	}
 	else if (isRight)
 	{
 		SetDirection(DirectionX::Right);
-		m_lastDirection = DirectionX::Right;
+	}
+	else
+	{
+		SetDirection(DirectionX::None);
 	}
 }
 
