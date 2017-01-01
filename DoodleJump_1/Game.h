@@ -21,7 +21,6 @@ private:
 
 	void CheckCylinderEffect();
 
-	sf::View m_view;
 	sf::RenderWindow m_window;
 
 	CDoodle m_hero;

@@ -8,10 +8,6 @@ CGame::CGame()
 {
 	m_window.setVerticalSyncEnabled(true);
 	m_window.setFramerateLimit(WINDOW_FRAME_LIMIT);
-
-	m_view.reset(sf::FloatRect(0, 0, float(WINDOW_SIZE.x), float(WINDOW_SIZE.y)));
-	m_view.setCenter(WINDOW_SIZE.x / 2.f, WINDOW_SIZE.y / 2.f);
-	m_window.setView(m_view);
 }
 
 void CGame::DoGameLoop()
@@ -95,7 +91,6 @@ void CGame::Update()
 {
 	m_hero.Update();
 	CheckCylinderEffect();
-	m_window.setView(m_view);
 }
 
 void CGame::Render()
