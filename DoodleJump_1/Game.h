@@ -6,7 +6,6 @@ class CGame
 {
 public:
 	CGame();
-	~CGame() = default;
 
 	void DoGameLoop();
 

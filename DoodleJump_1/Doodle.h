@@ -6,7 +6,6 @@ class CDoodle
 {
 public:
 	CDoodle();
-	~CDoodle() = default;
 
 	void Update();
 	void Draw(sf::RenderWindow & window);
