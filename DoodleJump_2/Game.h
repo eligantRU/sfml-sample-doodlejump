@@ -21,6 +21,11 @@ private:
 
 	void CheckCylinderEffect();
 
+	void GeneratePlates();
+	size_t GetUppermostPlateID();
+	void BuildPlate(const size_t basePlateID);
+	sf::Vector2f GetCenterPlatePosition(const size_t plateID) const;
+
 	sf::RenderWindow m_window;
 
 	std::vector<CPlate> m_plates;

@@ -2,7 +2,7 @@
 
 #include "targetver.h"
 
-#include <iostream>
+#include <algorithm>
 
 #pragma warning (push, 3)
 
