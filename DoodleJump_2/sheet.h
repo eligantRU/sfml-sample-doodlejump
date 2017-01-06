@@ -1,7 +1,7 @@
 #pragma once
 
 static const sf::Vector2u WINDOW_SIZE = { 600, 800 };
-static const std::string WINDOW_TITLE = "DoodleJump: Demo #1";
+static const std::string WINDOW_TITLE = "DoodleJump: Demo #2";
 static const auto WINDOW_STYLE = sf::Style::Close;
 static const unsigned WINDOW_FRAME_LIMIT = 60;
 

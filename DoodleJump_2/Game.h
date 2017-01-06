@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Doodle.h"
+#include "Plate.h"
 
 class CGame
 {
@@ -22,6 +23,7 @@ private:
 
 	sf::RenderWindow m_window;
 
+	std::vector<CPlate> m_plates;
 	CDoodle m_hero;
 	bool m_isLeft = false;
 	bool m_isRight = false;

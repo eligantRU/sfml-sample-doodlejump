@@ -8,6 +8,8 @@ CGame::CGame()
 {
 	m_window.setVerticalSyncEnabled(true);
 	m_window.setFramerateLimit(WINDOW_FRAME_LIMIT);
+
+	m_plates.emplace_back(DOODLE_INITIAL_POSITION);
 }
 
 void CGame::DoGameLoop()
@@ -90,6 +92,10 @@ void CGame::CheckKeyReleased(const sf::Event & event, bool & isNeedUpdate)
 void CGame::Update()
 {
 	m_hero.Update();
+	for (auto & plate : m_plates)
+	{
+		plate.Update();
+	}
 	CheckCylinderEffect();
 }
 
@@ -97,6 +103,10 @@ void CGame::Render()
 {
 	m_window.clear(WHITE);
 
+	for (const auto & plate : m_plates)
+	{
+		plate.Draw(m_window);
+	}
 	m_hero.Draw(m_window);
 }
 
