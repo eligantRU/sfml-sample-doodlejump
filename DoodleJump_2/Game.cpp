@@ -9,7 +9,14 @@ CGame::CGame()
 	m_window.setVerticalSyncEnabled(true);
 	m_window.setFramerateLimit(WINDOW_FRAME_LIMIT);
 
-	m_plates.emplace_back(sf::Vector2f(200, 800));
+	m_view.reset(sf::FloatRect(0.f, 0.f, float(WINDOW_SIZE.x), float(WINDOW_SIZE.y)));
+
+	m_plates.emplace_back(sf::Vector2f(200, 650));
+	m_plates.emplace_back(sf::Vector2f(150, 600));
+	m_plates.emplace_back(sf::Vector2f(200, 400));
+	m_plates.emplace_back(sf::Vector2f(270, 500));
+	m_plates.emplace_back(sf::Vector2f(90, 170));
+	m_plates.emplace_back(sf::Vector2f(340, -100));
 }
 
 void CGame::DoGameLoop()
@@ -18,6 +25,7 @@ void CGame::DoGameLoop()
 	{
 		CheckEvents();
 		Update();
+		m_window.setView(m_view);
 		Render();
 		m_window.display();
 	}
@@ -45,7 +53,16 @@ void CGame::CheckKeyboardEvents(const sf::Event & event)
 
 	if (isNeedUpdate)
 	{
+		if (m_isUp)
+		{
+			m_posY -= STEP;
+		}
+		if (m_isDown)
+		{
+			m_posY += STEP;
+		}
 		m_hero.UpdateDirection(m_isLeft, m_isRight);
+		m_hero.SetPosition(sf::Vector2f(m_hero.GetPosition().x, m_posY));
 	}
 }
 
@@ -61,6 +78,14 @@ void CGame::CheckKeyPressed(const sf::Event & event, bool & isNeedUpdate)
 			break;
 		case sf::Keyboard::D:
 			m_isRight = true;
+			isNeedUpdate = true;
+			break;
+		case sf::Keyboard::W:
+			m_isUp = true;
+			isNeedUpdate = true;
+			break;
+		case sf::Keyboard::S:
+			m_isDown = true;
 			isNeedUpdate = true;
 			break;
 		default:
@@ -83,6 +108,14 @@ void CGame::CheckKeyReleased(const sf::Event & event, bool & isNeedUpdate)
 			m_isRight = false;
 			isNeedUpdate = true;
 			break;
+		case sf::Keyboard::W:
+			m_isUp = false;
+			isNeedUpdate = true;
+			break;
+		case sf::Keyboard::S:
+			m_isDown = false;
+			isNeedUpdate = true;
+			break;
 		default:
 			break;
 		}
@@ -98,7 +131,9 @@ void CGame::Update()
 	}
 	CheckCylinderEffect();
 
-	GeneratePlates();
+	m_view.setCenter(m_hero.GetPosition());
+
+	//GeneratePlates();
 }
 
 void CGame::Render()

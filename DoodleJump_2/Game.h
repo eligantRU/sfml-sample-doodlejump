@@ -27,9 +27,14 @@ private:
 	sf::Vector2f GetCenterPlatePosition(const size_t plateID) const;
 
 	sf::RenderWindow m_window;
+	sf::View m_view;
 
 	std::vector<CPlate> m_plates;
 	CDoodle m_hero;
 	bool m_isLeft = false;
 	bool m_isRight = false;
+
+	float m_posY = DOODLE_INITIAL_POSITION.y;
+	bool m_isUp = false;
+	bool m_isDown = false;
 };
