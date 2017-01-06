@@ -5,7 +5,7 @@
 class CPlate
 {
 public:
-	CPlate(const sf::Vector2f & pos);
+	CPlate();
 
 	void Update() const;
 	void Draw(sf::RenderWindow & window) const;

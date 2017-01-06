@@ -8,7 +8,9 @@ static const unsigned WINDOW_FRAME_LIMIT = 60;
 static const sf::Vector2f DOODLE_SIZE = { 50, 80 };
 static const sf::Vector2f DOODLE_INITIAL_POSITION = 0.5f * (sf::Vector2f(WINDOW_SIZE) - DOODLE_SIZE);
 static const float DOODLE_MAX_JUMP_HEIGHT = 100.f; // TODO: fix magic number!
+
 static const sf::Vector2f PLATE_SIZE = { 80, 20 };
+static const size_t NUMBER_PLATES = 80; //2 * (WINDOW_SIZE.y / PLATE_SIZE.y);
 
 static const auto STEP = 6.f;
 

@@ -1,5 +1,7 @@
 #pragma once
 
+#include <array>
+
 #include "Doodle.h"
 #include "Plate.h"
 
@@ -23,13 +25,13 @@ private:
 
 	void GeneratePlates();
 	size_t GetUppermostPlateID();
-	void BuildPlate(const size_t basePlateID);
+	void BuildPlate(const size_t basePlateID, const size_t replacingPlateID);
 	sf::Vector2f GetCenterPlatePosition(const size_t plateID) const;
 
 	sf::RenderWindow m_window;
 	sf::View m_view;
 
-	std::vector<CPlate> m_plates;
+	std::array<CPlate, NUMBER_PLATES> m_plates;
 	CDoodle m_hero;
 	bool m_isLeft = false;
 	bool m_isRight = false;

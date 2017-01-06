@@ -2,11 +2,10 @@
 
 #include "Plate.h"
 
-CPlate::CPlate(const sf::Vector2f & pos)
+CPlate::CPlate()
 {
 	m_body.setFillColor(BROWN);
 	m_body.setSize(PLATE_SIZE);
-	m_body.setPosition(pos);
 }
 
 void CPlate::Update() const

@@ -9,14 +9,19 @@ CGame::CGame()
 	m_window.setVerticalSyncEnabled(true);
 	m_window.setFramerateLimit(WINDOW_FRAME_LIMIT);
 
-	m_view.reset(sf::FloatRect(0.f, 0.f, float(WINDOW_SIZE.x), float(WINDOW_SIZE.y)));
+	m_view.reset(sf::FloatRect(0, 0, float(WINDOW_SIZE.x), float(WINDOW_SIZE.y)));
 
-	m_plates.emplace_back(sf::Vector2f(200, 650));
-	m_plates.emplace_back(sf::Vector2f(150, 600));
-	m_plates.emplace_back(sf::Vector2f(200, 400));
-	m_plates.emplace_back(sf::Vector2f(270, 500));
-	m_plates.emplace_back(sf::Vector2f(90, 170));
-	m_plates.emplace_back(sf::Vector2f(340, -100));
+	for (auto & plate : m_plates)
+	{
+		plate.SetPosition(sf::Vector2f(WINDOW_SIZE.x / 2.f, WINDOW_SIZE.y / 2 + DOODLE_INITIAL_POSITION.y));
+	}
+	m_plates[0].SetPosition(DOODLE_INITIAL_POSITION);
+
+	m_plates[1].SetPosition(sf::Vector2f(150, 600));
+	m_plates[2].SetPosition(sf::Vector2f(200, 400));
+	m_plates[3].SetPosition(sf::Vector2f(270, 500));
+	m_plates[4].SetPosition(sf::Vector2f(90, 40));
+	m_plates[5].SetPosition(sf::Vector2f(340, -100));
 }
 
 void CGame::DoGameLoop()
@@ -162,12 +167,12 @@ void CGame::CheckCylinderEffect()
 
 void CGame::GeneratePlates()
 {
-	float viewPositionY = DOODLE_INITIAL_POSITION.y; //m_view.getCenter().y;
-	for (auto & plate : m_plates)
+	float viewPositionY = m_view.getCenter().y;
+	for (unsigned i = 0; i < m_plates.size(); ++i)
 	{
-		if ((plate.GetPosition().y > viewPositionY + WINDOW_SIZE.y / 2) && (m_plates.size() < 10))
+		if (m_plates[i].GetPosition().y > viewPositionY + WINDOW_SIZE.y / 2)
 		{
-			BuildPlate(GetUppermostPlateID());
+			BuildPlate(GetUppermostPlateID(), i);
 		}
 	}
 }
@@ -180,19 +185,19 @@ size_t CGame::GetUppermostPlateID()
 	return std::distance(m_plates.begin(), it);
 }
 
-void CGame::BuildPlate(const size_t basePlateID)
+void CGame::BuildPlate(const size_t basePlateID, const size_t replacingPlateID)
 {
-	sf::Vector2f startingPoint = GetCenterPlatePosition(basePlateID);
+	auto startingPoint = GetCenterPlatePosition(basePlateID);
 	auto offsetY = rand() % int(DOODLE_MAX_JUMP_HEIGHT);
-	auto offsetX = (sqrt(DOODLE_MAX_JUMP_HEIGHT * DOODLE_MAX_JUMP_HEIGHT - offsetY * offsetY));
+	auto offsetX = sqrt(DOODLE_MAX_JUMP_HEIGHT * DOODLE_MAX_JUMP_HEIGHT - offsetY * offsetY);
 	if (rand() % 2)
 	{
 		offsetX *= -1;
 	}
-	float x = float(int(startingPoint.x + offsetX + WINDOW_SIZE.x - PLATE_SIZE.x)
-	                % int(WINDOW_SIZE.x - PLATE_SIZE.x));
-	float y = startingPoint.y - offsetY;
-	m_plates.emplace_back(sf::Vector2f(x, y));
+	auto x = float(int(startingPoint.x + offsetX + WINDOW_SIZE.x - PLATE_SIZE.x)
+	               % int(WINDOW_SIZE.x - PLATE_SIZE.x));
+	auto y = startingPoint.y - offsetY;
+	m_plates[replacingPlateID].SetPosition(sf::Vector2f(x, y));
 }
 
 sf::Vector2f CGame::GetCenterPlatePosition(const size_t plateID) const
