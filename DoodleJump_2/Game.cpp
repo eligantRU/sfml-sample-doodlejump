@@ -13,7 +13,7 @@ CGame::CGame()
 
 	for (auto & plate : m_plates)
 	{
-		plate.SetPosition(sf::Vector2f(PLATE_INITIAL_POSITION));
+		plate.SetPosition(PLATE_INITIAL_POSITION);
 	}
 }
 
