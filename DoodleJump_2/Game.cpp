@@ -175,15 +175,15 @@ void CGame::GeneratePlates()
 
 unsigned CGame::GetUppermostPlateIndex() const
 {
-	unsigned uppermostlIndex = 0;
+	unsigned uppermostlPlateIndex = 0;
 	for (auto i = 0; i < NUMBER_PLATES; ++i)
 	{
-		if (m_plates[i].GetPosition().y < m_plates[uppermostlIndex].GetPosition().y)
+		if (m_plates[i].GetPosition().y < m_plates[uppermostlPlateIndex].GetPosition().y)
 		{
-			uppermostlIndex = i;
+			uppermostlPlateIndex = i;
 		}
 	}
-	return uppermostlIndex;
+	return uppermostlPlateIndex;
 }
 
 void CGame::BuildPlate(const unsigned basePlateID, const unsigned replacingPlateID)
