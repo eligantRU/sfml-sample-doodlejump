@@ -13,7 +13,7 @@ CGame::CGame()
 
 	for (auto & plate : m_plates)
 	{
-		plate.SetPosition(sf::Vector2f(WINDOW_SIZE.x / 2.f, WINDOW_SIZE.y / 2 + DOODLE_INITIAL_POSITION.y));
+		plate.SetPosition(sf::Vector2f(WINDOW_SIZE.x / 2.f, WINDOW_SIZE.y + DOODLE_INITIAL_POSITION.y));
 	}
 	m_plates[0].SetPosition(DOODLE_INITIAL_POSITION);
 
@@ -173,22 +173,27 @@ void CGame::GeneratePlates()
 		if ((m_plates[i].GetPosition().y > viewPositionY + WINDOW_SIZE.y / 2) &&
 		    (m_plates[i + 1].GetPosition().y > viewPositionY + WINDOW_SIZE.y / 2))
 		{
-			auto uppermostPlateID = GetUppermostPlateID();
+			auto uppermostPlateID = GetUppermostPlateIndex();
 			BuildPlate(uppermostPlateID, i);
 			BuildPlate(uppermostPlateID, i + 1);
 		}
 	}
 }
 
-size_t CGame::GetUppermostPlateID() const
+unsigned CGame::GetUppermostPlateIndex() const
 {
-	auto it = std::min_element(m_plates.begin(), m_plates.end(), [](const auto & lhs, const auto & rhs) {
-		return (lhs.GetPosition().y < rhs.GetPosition().y);
-	});
-	return std::distance(m_plates.begin(), it);
+	unsigned uppermostlIndex = 0;
+	for (auto i = 0; i < NUMBER_PLATES; ++i)
+	{
+		if (m_plates[i].GetPosition().y < m_plates[uppermostlIndex].GetPosition().y)
+		{
+			uppermostlIndex = i;
+		}
+	}
+	return uppermostlIndex;
 }
 
-void CGame::BuildPlate(const size_t basePlateID, const size_t replacingPlateID)
+void CGame::BuildPlate(const unsigned basePlateID, const unsigned replacingPlateID)
 {
 	auto startingPoint = GetCenterPlatePosition(basePlateID);
 	auto offsetY = rand() % int(DOODLE_MAX_JUMP_HEIGHT);
@@ -203,7 +208,7 @@ void CGame::BuildPlate(const size_t basePlateID, const size_t replacingPlateID)
 	m_plates[replacingPlateID].SetPosition(sf::Vector2f(x, y));
 }
 
-sf::Vector2f CGame::GetCenterPlatePosition(const size_t plateID) const
+sf::Vector2f CGame::GetCenterPlatePosition(const unsigned plateID) const
 {
 	auto x = m_plates[plateID].GetPosition().x + PLATE_SIZE.x / 2;
 	auto y = m_plates[plateID].GetPosition().y + PLATE_SIZE.y / 2;
