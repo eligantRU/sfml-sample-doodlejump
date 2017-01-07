@@ -67,9 +67,7 @@ void CDoodle::Move(const sf::Vector2f & deltaPosition)
 
 sf::Vector2f CDoodle::GetOffset() const
 {
-	return { 
-		GetHorizontalOffset(), GetVerticalOffset()
-	};
+	return sf::Vector2f(GetHorizontalOffset(), GetVerticalOffset());
 }
 
 float CDoodle::GetHorizontalOffset() const
