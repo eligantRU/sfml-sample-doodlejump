@@ -13,15 +13,7 @@ CGame::CGame()
 
 	for (auto & plate : m_plates)
 	{
-		plate.SetPosition(sf::Vector2f(WINDOW_SIZE.x / 2.f, WINDOW_SIZE.y + DOODLE_INITIAL_POSITION.y));
 	}
-	m_plates[0].SetPosition(DOODLE_INITIAL_POSITION);
-
-	m_plates[1].SetPosition(sf::Vector2f(150, 600));
-	m_plates[2].SetPosition(sf::Vector2f(200, 400));
-	m_plates[3].SetPosition(sf::Vector2f(270, 500));
-	m_plates[4].SetPosition(sf::Vector2f(90, 40));
-	m_plates[5].SetPosition(sf::Vector2f(340, -100));
 }
 
 void CGame::DoGameLoop()

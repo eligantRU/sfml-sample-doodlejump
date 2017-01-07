@@ -13,7 +13,7 @@ static const sf::Vector2f DOODLE_INITIAL_POSITION = 0.5f * (sf::Vector2f(WINDOW_
 static const float DOODLE_MAX_JUMP_HEIGHT = 242.f; // t * PLATE_DELTA_VELOCITY - 0.5 * t^2, t = 22
 
 static const sf::Vector2f PLATE_SIZE = { 80, 20 };
-static const size_t NUMBER_PLATES = 80; // = 2 * (WINDOW_SIZE.y / PLATE_SIZE.y);
+static const unsigned NUMBER_PLATES = 80; // = 2 * (WINDOW_SIZE.y / PLATE_SIZE.y);
 
 static const auto STEP = 6.f;
 
