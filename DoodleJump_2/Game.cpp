@@ -189,7 +189,7 @@ unsigned CGame::GetUppermostPlateIndex() const
 void CGame::BuildPlate(const unsigned basePlateID, const unsigned replacingPlateID)
 {
 	auto startingPoint = GetCenterPlatePosition(basePlateID);
-	auto offsetY = rand() % int(DOODLE_MAX_JUMP_HEIGHT);
+	auto offsetY = (rand() % int(DOODLE_MAX_JUMP_HEIGHT - PLATE_SIZE.y)) + PLATE_SIZE.y;
 	auto offsetX = sqrt(DOODLE_MAX_JUMP_HEIGHT * DOODLE_MAX_JUMP_HEIGHT - offsetY * offsetY);
 	if (rand() % 2)
 	{
