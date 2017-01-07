@@ -138,7 +138,7 @@ void CGame::Update()
 
 	m_view.setCenter(m_hero.GetPosition());
 
-	//GeneratePlates();
+	GeneratePlates();
 }
 
 void CGame::Render()
@@ -167,17 +167,20 @@ void CGame::CheckCylinderEffect()
 
 void CGame::GeneratePlates()
 {
-	float viewPositionY = m_view.getCenter().y;
-	for (unsigned i = 0; i < m_plates.size(); ++i)
+	auto viewPositionY = m_view.getCenter().y;
+	for (int i = 0; i < NUMBER_PLATES; ++(++i))
 	{
-		if (m_plates[i].GetPosition().y > viewPositionY + WINDOW_SIZE.y / 2)
+		if ((m_plates[i].GetPosition().y > viewPositionY + WINDOW_SIZE.y / 2) &&
+		    (m_plates[i + 1].GetPosition().y > viewPositionY + WINDOW_SIZE.y / 2))
 		{
-			BuildPlate(GetUppermostPlateID(), i);
+			auto uppermostPlateID = GetUppermostPlateID();
+			BuildPlate(uppermostPlateID, i);
+			BuildPlate(uppermostPlateID, i + 1);
 		}
 	}
 }
 
-size_t CGame::GetUppermostPlateID()
+size_t CGame::GetUppermostPlateID() const
 {
 	auto it = std::min_element(m_plates.begin(), m_plates.end(), [](const auto & lhs, const auto & rhs) {
 		return (lhs.GetPosition().y < rhs.GetPosition().y);
@@ -202,7 +205,7 @@ void CGame::BuildPlate(const size_t basePlateID, const size_t replacingPlateID)
 
 sf::Vector2f CGame::GetCenterPlatePosition(const size_t plateID) const
 {
-	float x = m_plates[plateID].GetPosition().x + PLATE_SIZE.x / 2;
-	float y = m_plates[plateID].GetPosition().y + PLATE_SIZE.y / 2;
+	auto x = m_plates[plateID].GetPosition().x + PLATE_SIZE.x / 2;
+	auto y = m_plates[plateID].GetPosition().y + PLATE_SIZE.y / 2;
 	return sf::Vector2f(x, y);
 }

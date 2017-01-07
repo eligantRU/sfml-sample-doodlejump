@@ -24,7 +24,7 @@ private:
 	void CheckCylinderEffect();
 
 	void GeneratePlates();
-	size_t GetUppermostPlateID();
+	size_t GetUppermostPlateID() const;
 	void BuildPlate(const size_t basePlateID, const size_t replacingPlateID);
 	sf::Vector2f GetCenterPlatePosition(const size_t plateID) const;
 
