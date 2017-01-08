@@ -19,11 +19,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{0F6908E2-F067-4F66-B1CC-C7068D157E3C}</ProjectGuid>
+    <ProjectGuid>{5F59B5B4-AA1B-4AAA-BAD1-10FF399E38FA}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>SFMLsample</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
-    <ProjectName>DoodleJump_2</ProjectName>
+    <ProjectName>DoodleJump_3</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
