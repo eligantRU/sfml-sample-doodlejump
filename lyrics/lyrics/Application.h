@@ -8,11 +8,11 @@ public:
 
 	void Execute();
 
+private:
 	void CheckEvents();
 	void Update(float dt);
 	void Render();
 
-private:
 	sf::RenderWindow m_window;
 	sf::Clock m_clock;
 
