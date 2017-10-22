@@ -4,6 +4,8 @@
 
 int main()
 {
+	srand(unsigned(time(nullptr)));
+
 	Application app;
 	app.Execute();
 }

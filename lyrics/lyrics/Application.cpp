@@ -18,6 +18,19 @@ static const auto INITIAL_CIRCLE_POSITION = 0.5f * sf::Vector2f(
 static const auto ORBIT_RADIUS = 200.f;
 static const auto ANGULAR_VELOCITY = static_cast<float>(M_PI / 2);
 
+sf::Color GetRandomColor()
+{
+	const auto R = rand() % 256;
+	const auto G = rand() % 256;
+	const auto B = rand() % 256;
+
+	return {
+		sf::Uint8(R),
+		sf::Uint8(G),
+		sf::Uint8(B)
+	};
+}
+
 }
 
 Application::Application()
@@ -25,7 +38,7 @@ Application::Application()
 	,m_shape(CIRCLE_RADIUS, CIRCLE_PRECIZION)
 {
 	m_shape.setPosition(INITIAL_CIRCLE_POSITION);
-	m_shape.setFillColor(sf::Color::White);
+	m_shape.setFillColor(GetRandomColor());
 }
 
 void Application::Execute()
