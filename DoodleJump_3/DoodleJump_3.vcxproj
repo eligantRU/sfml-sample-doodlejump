@@ -103,6 +103,10 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>sfml-main-d.lib;sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;sfml-audio-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy /Y /E /I "$(LIB_PATH)SFML\bin\$(Configuration)" "$(TargetDir)"
+xcopy /Y /E /I "$(ProjectDir)res" "$(TargetDir)res"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -117,6 +121,10 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>sfml-main-d.lib;sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;sfml-audio-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy /Y /E /I "$(LIB_PATH)SFML\bin\$(Configuration)" "$(TargetDir)"
+xcopy /Y /E /I "$(ProjectDir)res" "$(TargetDir)res"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -137,6 +145,10 @@
       <IgnoreAllDefaultLibraries>
       </IgnoreAllDefaultLibraries>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy /Y /E /I "$(LIB_PATH)SFML\bin\$(Configuration)" "$(TargetDir)"
+xcopy /Y /E /I "$(ProjectDir)res" "$(TargetDir)res"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -157,6 +169,10 @@
       <IgnoreAllDefaultLibraries>
       </IgnoreAllDefaultLibraries>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy /Y /E /I "$(LIB_PATH)SFML\bin\$(Configuration)" "$(TargetDir)"
+xcopy /Y /E /I "$(ProjectDir)res" "$(TargetDir)res"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Assets.h" />

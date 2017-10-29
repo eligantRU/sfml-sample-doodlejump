@@ -5,13 +5,13 @@
 
 CAssets::CAssets()
 {
-	AddRepeatedTexture(BACKGROUND_TEXTURE, "images/background.png");
-	AddTexture(DOODLE_LEFT_TEXTURE, "images/Doodle45_45Left.png");
-	AddTexture(DOODLE_RIGHT_TEXTURE, "images/Doodle45_45Right.png");
-	AddTexture(PLATE_STATIC_TEXTURE, "images/Plate_63_15_Green.png");
+	AddRepeatedTexture(BACKGROUND_TEXTURE, "res/images/background.png");
+	AddTexture(DOODLE_LEFT_TEXTURE, "res/images/Doodle45_45Left.png");
+	AddTexture(DOODLE_RIGHT_TEXTURE, "res/images/Doodle45_45Right.png");
+	AddTexture(PLATE_STATIC_TEXTURE, "res/images/Plate_63_15_Green.png");
 
-	AddFont(ARIAL_FONT, "arial.ttf");
-	AddImage(WINDOW_ICON, "images/icon.png");
+	AddFont(ARIAL_FONT, "res/fonts/arial.ttf");
+	AddImage(WINDOW_ICON, "res/images/icon.png");
 }
 
 CAssets::~CAssets()
