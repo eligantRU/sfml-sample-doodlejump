@@ -35,6 +35,7 @@ private:
 
 	CAssets m_assets;
 
+	sf::Sprite m_background;
 	std::vector<CPlate> m_plates;
 	CDoodle m_hero;
 	bool m_isLeft = false;

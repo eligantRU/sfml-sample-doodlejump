@@ -18,6 +18,9 @@ CGame::CGame()
 		plate.SetPosition(PLATE_INITIAL_POSITION);
 		m_plates.push_back(plate);
 	}
+
+	m_background.setTextureRect(sf::IntRect(0, 0, WINDOW_SIZE.x, WINDOW_SIZE.y));
+	m_background.setTexture(m_assets.BACKGROUND_TEXTURE);
 }
 
 void CGame::DoGameLoop()
@@ -122,6 +125,7 @@ void CGame::Update(float dt)
 	}
 	CheckCylinderEffect();
 
+	m_background.setPosition(m_hero.GetPosition() - 0.5f * sf::Vector2f(WINDOW_SIZE));
 	m_view.setCenter(m_hero.GetPosition());
 
 	GeneratePlates();
@@ -130,6 +134,8 @@ void CGame::Update(float dt)
 void CGame::Render()
 {
 	m_window.clear(WHITE);
+
+	m_window.draw(m_background);
 
 	for (const auto & plate : m_plates)
 	{
