@@ -7,7 +7,7 @@ class CDoodle
 public:
 	CDoodle();
 
-	void Update();
+	void Update(float dt);
 	void Draw(sf::RenderWindow & window);
 
 	void UpdateDirection(bool isLeft, bool isRight);
@@ -24,7 +24,7 @@ public:
 private:
 	float GetVerticalOffset() const;
 	float GetHorizontalOffset() const;
-	
+
 	DirectionX m_direction = DirectionX::None;
 
 	sf::RectangleShape m_body;

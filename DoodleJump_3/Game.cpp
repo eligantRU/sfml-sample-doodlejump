@@ -21,8 +21,10 @@ void CGame::DoGameLoop()
 {
 	while (m_window.isOpen())
 	{
+		const auto dt = m_clock.restart().asSeconds();
+
 		CheckEvents();
-		Update();
+		Update(dt);
 		m_window.setView(m_view);
 		Render();
 		m_window.display();
@@ -49,19 +51,7 @@ void CGame::CheckKeyboardEvents(const sf::Event & event)
 	CheckKeyPressed(event, isNeedUpdate);
 	CheckKeyReleased(event, isNeedUpdate);
 
-	if (isNeedUpdate)
-	{
-		if (m_isUp)
-		{
-			m_posY -= STEP;
-		}
-		if (m_isDown)
-		{
-			m_posY += STEP;
-		}
-		m_hero.UpdateDirection(m_isLeft, m_isRight);
-		m_hero.SetPosition(sf::Vector2f(m_hero.GetPosition().x, m_posY));
-	}
+	m_hero.UpdateDirection(m_isLeft, m_isRight);
 }
 
 void CGame::CheckKeyPressed(const sf::Event & event, bool & isNeedUpdate)
@@ -120,12 +110,12 @@ void CGame::CheckKeyReleased(const sf::Event & event, bool & isNeedUpdate)
 	}
 }
 
-void CGame::Update()
+void CGame::Update(float dt)
 {
-	m_hero.Update();
+	m_hero.Update(dt);
 	for (auto & plate : m_plates)
 	{
-		plate.Update();
+		plate.Update(dt);
 	}
 	CheckCylinderEffect();
 
@@ -164,7 +154,7 @@ void CGame::GeneratePlates()
 	for (int i = 0; i < NUMBER_PLATES; ++(++i))
 	{
 		if ((m_plates[i].GetPosition().y > viewPositionY + WINDOW_SIZE.y / 2) &&
-		    (m_plates[i + 1].GetPosition().y > viewPositionY + WINDOW_SIZE.y / 2))
+			(m_plates[i + 1].GetPosition().y > viewPositionY + WINDOW_SIZE.y / 2))
 		{
 			auto uppermostPlateID = GetUppermostPlateIndex();
 			BuildPlate(uppermostPlateID, i);
@@ -196,7 +186,7 @@ void CGame::BuildPlate(const unsigned basePlateID, const unsigned replacingPlate
 		offsetX *= -1;
 	}
 	auto x = float(int(startingPoint.x + offsetX + WINDOW_SIZE.x - PLATE_SIZE.x)
-	               % int(WINDOW_SIZE.x - PLATE_SIZE.x));
+		% int(WINDOW_SIZE.x - PLATE_SIZE.x));
 	auto y = startingPoint.y - offsetY;
 	m_plates[replacingPlateID].SetPosition(sf::Vector2f(x, y));
 }

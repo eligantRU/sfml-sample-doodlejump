@@ -13,7 +13,7 @@ public:
 	void DoGameLoop();
 
 private:
-	void Update();
+	void Update(float dt);
 	void Render();
 
 	void CheckEvents();
@@ -28,6 +28,7 @@ private:
 	void BuildPlate(const unsigned basePlateID, const unsigned replacingPlateID);
 	sf::Vector2f GetCenterPlatePosition(const unsigned plateID) const;
 
+	sf::Clock m_clock;
 	sf::RenderWindow m_window;
 	sf::View m_view;
 

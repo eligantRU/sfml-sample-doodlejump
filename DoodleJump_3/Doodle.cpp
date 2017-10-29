@@ -10,9 +10,9 @@ CDoodle::CDoodle()
 	m_body.setPosition(DOODLE_INITIAL_POSITION);
 }
 
-void CDoodle::Update()
+void CDoodle::Update(float dt)
 {
-	Move(GetOffset());
+	Move(GetOffset() * dt);
 }
 
 void CDoodle::Draw(sf::RenderWindow & window)
@@ -89,5 +89,5 @@ float CDoodle::GetHorizontalOffset() const
 
 float CDoodle::GetVerticalOffset() const
 {
-	return 0;
+	return -STEP;
 }

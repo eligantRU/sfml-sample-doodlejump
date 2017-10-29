@@ -7,7 +7,7 @@ class CPlate
 public:
 	CPlate();
 
-	void Update() const;
+	void Update(float dt) const;
 	void Draw(sf::RenderWindow & window) const;
 
 	void SetPosition(const sf::Vector2f & pos);

@@ -8,9 +8,9 @@ CPlate::CPlate()
 	m_body.setSize(PLATE_SIZE);
 }
 
-void CPlate::Update() const
+void CPlate::Update(float dt) const
 {
-
+	(void)&dt;
 }
 
 void CPlate::Draw(sf::RenderWindow & window) const

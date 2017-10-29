@@ -1,7 +1,7 @@
 #pragma once
 
 static const sf::Vector2u WINDOW_SIZE = { 600, 800 };
-static const std::string WINDOW_TITLE = "DoodleJump: Demo #2";
+static const std::string WINDOW_TITLE = "DoodleJump: Demo #3";
 static const auto WINDOW_STYLE = sf::Style::Close;
 static const unsigned WINDOW_FRAME_LIMIT = 60;
 
@@ -16,7 +16,7 @@ static const sf::Vector2f PLATE_SIZE = { 80, 20 };
 static const unsigned NUMBER_PLATES = 80; // = 2 * (WINDOW_SIZE.y / PLATE_SIZE.y);
 static const sf::Vector2f PLATE_INITIAL_POSITION = { WINDOW_SIZE.x / 2.f, WINDOW_SIZE.y + DOODLE_INITIAL_POSITION.y };
 
-static const auto STEP = 6.f;
+static const auto STEP = 150.f;
 
 static const sf::Color GREEN = { 0, 127, 0 };
 static const sf::Color BROWN = { 65, 25, 0 };
