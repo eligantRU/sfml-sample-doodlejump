@@ -3,11 +3,11 @@
 #include "Doodle.h"
 #include "sheet.h"
 
-CDoodle::CDoodle()
+CDoodle::CDoodle(CAssets & assets)
+	:m_assets(assets)
 {
-	m_body.setFillColor(GREEN);
-	m_body.setSize(DOODLE_SIZE);
 	m_body.setPosition(DOODLE_INITIAL_POSITION);
+	SetTexture(m_assets.DOODLE_RIGHT_TEXTURE);
 }
 
 void CDoodle::Update(float dt)
@@ -29,10 +29,12 @@ void CDoodle::UpdateDirection(bool isLeft, bool isRight)
 	else if (isLeft)
 	{
 		SetDirection(DirectionX::Left);
+		SetTexture(m_assets.DOODLE_LEFT_TEXTURE);
 	}
 	else if (isRight)
 	{
 		SetDirection(DirectionX::Right);
+		SetTexture(m_assets.DOODLE_RIGHT_TEXTURE);
 	}
 	else
 	{
@@ -90,4 +92,10 @@ float CDoodle::GetHorizontalOffset() const
 float CDoodle::GetVerticalOffset() const
 {
 	return -STEP;
+}
+
+void CDoodle::SetTexture(const sf::Texture & texture)
+{
+	m_body.setTextureRect(sf::IntRect(0, 0, int(texture.getSize().x), int(texture.getSize().y)));
+	m_body.setTexture(texture);
 }

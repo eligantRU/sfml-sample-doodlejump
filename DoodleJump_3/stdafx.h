@@ -2,6 +2,8 @@
 
 #include "targetver.h"
 
+#include <Windows.h>
+
 #pragma warning (push, 3)
 
 #include <SFML/Graphics.hpp>

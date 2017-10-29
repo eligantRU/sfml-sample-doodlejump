@@ -2,6 +2,7 @@
 
 #include <array>
 
+#include "Assets.h"
 #include "Doodle.h"
 #include "Plate.h"
 
@@ -32,7 +33,9 @@ private:
 	sf::RenderWindow m_window;
 	sf::View m_view;
 
-	std::array<CPlate, NUMBER_PLATES> m_plates;
+	CAssets m_assets;
+
+	std::vector<CPlate> m_plates;
 	CDoodle m_hero;
 	bool m_isLeft = false;
 	bool m_isRight = false;

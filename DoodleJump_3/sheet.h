@@ -8,11 +8,11 @@ static const unsigned WINDOW_FRAME_LIMIT = 60;
 static const float ACCELERATION = 1.f;
 static const float PLATE_DELTA_VELOCITY = 22.f;
 
-static const sf::Vector2f DOODLE_SIZE = { 50, 80 };
+static const sf::Vector2f DOODLE_SIZE = { 45, 45 };
 static const sf::Vector2f DOODLE_INITIAL_POSITION = 0.5f * (sf::Vector2f(WINDOW_SIZE) - DOODLE_SIZE);
 static const float DOODLE_MAX_JUMP_HEIGHT = 242.f; // t * PLATE_DELTA_VELOCITY - 0.5 * t^2, t = 22
 
-static const sf::Vector2f PLATE_SIZE = { 80, 20 };
+static const sf::Vector2f PLATE_SIZE = { 63, 15 };
 static const unsigned NUMBER_PLATES = 80; // = 2 * (WINDOW_SIZE.y / PLATE_SIZE.y);
 static const sf::Vector2f PLATE_INITIAL_POSITION = { WINDOW_SIZE.x / 2.f, WINDOW_SIZE.y + DOODLE_INITIAL_POSITION.y };
 

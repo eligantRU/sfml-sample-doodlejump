@@ -2,10 +2,10 @@
 
 #include "Plate.h"
 
-CPlate::CPlate()
+CPlate::CPlate(CAssets & assets)
+	:m_assets(assets)
 {
-	m_body.setFillColor(BROWN);
-	m_body.setSize(PLATE_SIZE);
+	SetTexture(m_assets.PLATE_STATIC_TEXTURE);
 }
 
 void CPlate::Update(float dt) const
@@ -26,4 +26,10 @@ void CPlate::SetPosition(const sf::Vector2f & pos)
 sf::Vector2f CPlate::GetPosition() const
 {
 	return m_body.getPosition();
+}
+
+void CPlate::SetTexture(const sf::Texture & texture)
+{
+	m_body.setTextureRect(sf::IntRect(0, 0, int(texture.getSize().x), int(texture.getSize().y)));
+	m_body.setTexture(texture);
 }

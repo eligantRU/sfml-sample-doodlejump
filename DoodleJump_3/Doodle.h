@@ -1,11 +1,12 @@
 #pragma once
 
 #include "sheet.h"
+#include "Assets.h"
 
 class CDoodle
 {
 public:
-	CDoodle();
+	CDoodle(CAssets & assets);
 
 	void Update(float dt);
 	void Draw(sf::RenderWindow & window);
@@ -21,11 +22,15 @@ public:
 
 	sf::Vector2f GetOffset() const;
 
+	void SetTexture(const sf::Texture & texture);
+
 private:
 	float GetVerticalOffset() const;
 	float GetHorizontalOffset() const;
 
 	DirectionX m_direction = DirectionX::None;
 
-	sf::RectangleShape m_body;
+	CAssets m_assets;
+
+	sf::Sprite m_body;
 };

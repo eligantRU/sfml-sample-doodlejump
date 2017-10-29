@@ -5,15 +5,18 @@
 
 CGame::CGame()
 	:m_window(sf::VideoMode(WINDOW_SIZE.x, WINDOW_SIZE.y), WINDOW_TITLE, WINDOW_STYLE)
+	,m_hero(m_assets)
 {
 	m_window.setVerticalSyncEnabled(true);
 	m_window.setFramerateLimit(WINDOW_FRAME_LIMIT);
 
 	m_view.reset(sf::FloatRect(0, 0, float(WINDOW_SIZE.x), float(WINDOW_SIZE.y)));
 
-	for (auto & plate : m_plates)
+	for (int i = 0; i < NUMBER_PLATES; ++i)
 	{
+		CPlate plate(m_assets);
 		plate.SetPosition(PLATE_INITIAL_POSITION);
+		m_plates.push_back(plate);
 	}
 }
 
