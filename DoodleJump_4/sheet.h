@@ -1,7 +1,7 @@
 #pragma once
 
 static const sf::Vector2u WINDOW_SIZE = { 600, 800 };
-static const std::string WINDOW_TITLE = "DoodleJump: Demo #3";
+static const std::string WINDOW_TITLE = "DoodleJump: Demo #4";
 static const auto WINDOW_STYLE = sf::Style::Close;
 static const unsigned WINDOW_FRAME_LIMIT = 60;
 
@@ -27,4 +27,21 @@ enum class DirectionX
 	None = 0,
 	Left,
 	Right
+};
+
+enum class SceneType
+{
+	GameScene = 0,
+	PauseScene,
+};
+
+struct SceneInfo
+{
+public:
+	SceneInfo() = delete;
+	SceneInfo(SceneType type)
+		:nextSceneType(type)
+	{}
+
+	SceneType nextSceneType;
 };

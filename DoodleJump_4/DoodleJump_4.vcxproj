@@ -176,8 +176,11 @@ xcopy /Y /E /I "$(ProjectDir)res" "$(TargetDir)res"</Command>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Assets.h" />
+    <ClInclude Include="Button.h" />
     <ClInclude Include="Doodle.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="GameScene.h" />
+    <ClInclude Include="PauseScene.h" />
     <ClInclude Include="Plate.h" />
     <ClInclude Include="sheet.h" />
     <ClInclude Include="stdafx.h" />
@@ -185,9 +188,12 @@ xcopy /Y /E /I "$(ProjectDir)res" "$(TargetDir)res"</Command>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Assets.cpp" />
+    <ClCompile Include="Button.cpp" />
     <ClCompile Include="Doodle.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="PauseScene.cpp" />
     <ClCompile Include="Plate.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

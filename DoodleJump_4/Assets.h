@@ -12,9 +12,14 @@ public:
 	void AddImage(sf::Image & image, const std::string & path);
 
 	sf::Texture BACKGROUND_TEXTURE;
+
 	sf::Texture PLATE_STATIC_TEXTURE;
+
 	sf::Texture DOODLE_LEFT_TEXTURE;
 	sf::Texture DOODLE_RIGHT_TEXTURE;
+
+	sf::Texture BUTTON_ACTIVE_TEXTURE;
+	sf::Texture BUTTON_INACTIVE_TEXTURE;
 
 	sf::Image WINDOW_ICON;
 
